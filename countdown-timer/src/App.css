@@ -18,10 +18,14 @@
 }
 
 .clockSection{
-  
+  min-width: 100px;
   color: aqua;
   padding: 1rem;
   border: 1px solid white;
+}
+.clockSectionContent{
+  color: firebrick;
+  font-size: 2rem;;
 }
 
 .controls{

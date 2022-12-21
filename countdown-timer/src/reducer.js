@@ -4,7 +4,7 @@ export const initialState = {
     interval : null,
     timeLeft : {
         hours : 0,
-        minutes : 0,
+        minutes : 1,
         seconds : 10,
     }
 }
