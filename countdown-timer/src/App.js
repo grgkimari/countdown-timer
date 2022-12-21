@@ -20,7 +20,7 @@ function App() {
         )
         })}>{state.timeIsUp === false && state.interval !== null ? "Stop" : state.timeIsUp && state.interval === null ? "Time is up" : "Start" }</button>
       <button className="controls">Reset</button>
-      <div className='controls'>{JSON.stringify(state)}</div>
+      
     </div>
   );
 }
