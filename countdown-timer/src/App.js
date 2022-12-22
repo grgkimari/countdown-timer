@@ -1,8 +1,8 @@
 import './App.css';
 import Clock from './Components/Clock'
 import { useReducer} from 'react'
-import mainReducer, {initialState} from './reducer'
-import {COUNT_DOWN, SET_INTERVAL} from './reducer'
+import mainReducer, {COUNT_DOWN, SET_INTERVAL, RESET, CLEAR_INTERVAL, initialState} from './reducer'
+
 
 
 function App() {
@@ -11,15 +11,23 @@ function App() {
   return (
     <div className="App">
       <Clock time ={state.timeLeft}/>
-      <button className="controls" onClick={() => dispatch({
-        type : SET_INTERVAL,
-        payload : setInterval(
-          () => {
-            dispatch({type : COUNT_DOWN})
-          }, 1000
-        )
-        })}>{state.timeIsUp === false && state.interval !== null ? "Stop" : state.timeIsUp && state.interval === null ? "Time is up" : "Start" }</button>
-      <button className="controls">Reset</button>
+      <button className="controls" onClick={() => {
+        if(state.interval === null){
+          dispatch({
+            type : SET_INTERVAL,
+            payload : setInterval(
+              () => {
+                dispatch({type : COUNT_DOWN})
+              }, 1000
+            )
+            })
+        }
+        else{
+          dispatch({type : CLEAR_INTERVAL})
+        }
+      }
+      }>{state.timeIsUp === false && state.interval !== null ? "Stop" : state.timeIsUp && state.interval === null ? "Time is up" : "Start" }</button>
+      <button className="controls" onClick={() => dispatch({type : RESET})}>Reset</button>
       
     </div>
   );

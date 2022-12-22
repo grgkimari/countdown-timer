@@ -10,7 +10,7 @@
 }
 
 .clock{
-  
+  /* clock face */
   display: flex;
   gap: 1rem;
   justify-content: space-evenly;
