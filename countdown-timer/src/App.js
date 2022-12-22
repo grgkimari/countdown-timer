@@ -7,7 +7,7 @@ import mainReducer, {COUNT_DOWN, SET_INTERVAL, RESET, CLEAR_INTERVAL, initialSta
 
 function App() {
   const [state, dispatch] = useReducer(mainReducer, initialState)
-  console.log("STATE : " + JSON.stringify(state))
+
   return (
     <div className="App">
       <Clock time ={state.timeLeft}/>

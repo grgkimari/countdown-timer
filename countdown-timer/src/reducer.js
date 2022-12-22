@@ -20,26 +20,23 @@ export const RESET = "RESET"
 const mainReducer = (state = initialState, action) => {
     switch (action.type){
         case CLEAR_INTERVAL:
-            console.log("Clearing Interval")
+            
             clearInterval(state.interval)
             return {
                 ...state,
                 interval : null
             }
         case RESET:
-            console.log("Resetting to default state.")
             if(state.interval !== null){
                 clearInterval(state.interval)
             }
             return initialState
         case SET_INTERVAL:
-            console.log("SETTING INTERVAL TO : " + action.payload)
             return {
                 ...state,
                 interval : action.payload,
             }
         case COUNT_DOWN:
-            console.log("COUNTING DOWN")
             if(state.timeLeft.seconds > 0){
                 return {
                     ...state,
@@ -71,7 +68,6 @@ const mainReducer = (state = initialState, action) => {
                     }
                 }
                 else{
-                    console.log("Countdown over!")
                     clearInterval(state.interval)
                     return {
                         timeIsUp : true,
