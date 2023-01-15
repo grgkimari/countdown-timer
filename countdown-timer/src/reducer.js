@@ -14,11 +14,74 @@ export const COUNT_DOWN = "COUNT_DOWN"
 export const SET_INTERVAL = "SET_INERVAL"
 export const CLEAR_INTERVAL = "CLEAR_INTERVAL"
 export const RESET = "RESET"
+export const INCREMENT_HOURS = "INCREMENT_HOURS"
+export const DECREMENT_HOURS = "DECREMENT_HOURS"
+export const INCREMENT_MINUTES = "INCREMENT_MINUTES"
+export const DECREMENT_MINUTES = "DECREMENT_MINUTES"
+export const INCREMENT_SECONDS = "INCREMENT_SECONDS"
+export const DECREMENT_SECONDS = "DECREMENT_SECONDS"
 
 
 
 const mainReducer = (state = initialState, action) => {
     switch (action.type){
+        case INCREMENT_HOURS:
+            return {
+                ...state,
+                timeLeft : {
+                    hours : state.timeLeft.hours < 24 ? state.timeLeft.hours + 1 : state.timeLeft.hours,
+                    minutes : state.timeLeft.minutes,
+                    seconds : state.timeLeft.seconds,
+                }
+            }
+        case DECREMENT_HOURS:
+            return {
+                ...state,
+                timeLeft : {
+                    hours : state.timeLeft.hours > 0 ? state.timeLeft.hours - 1 : state.timeLeft.hours,
+                    minutes : state.timeLeft.minutes,
+                    seconds : state.timeLeft.seconds
+                }
+            }
+
+        case INCREMENT_MINUTES :
+            return {
+                ...state,
+                timeLeft : {
+                    hours : state.timeLeft.hours,
+                    minutes : state.timeLeft.minutes < 60 ? state.timeLeft.minutes + 1 : state.timeLeft.minutes,
+                    seconds : state.timeLeft.seconds
+                }
+            }
+        case DECREMENT_MINUTES:
+            return {
+                ...state,
+                timeLeft : {
+                    hours : state.timeLeft.hours,
+                    minutes : state.timeLeft.minutes > 0 ? state.timeLeft.minutes - 1 : state.timeLeft.minutes,
+                    seconds : state.timeLeft.seconds,
+                }
+
+            }
+        case INCREMENT_SECONDS:
+            return {
+                ...state,
+                timeLeft : {
+                    hours : state.timeLeft.hours,
+                    minutes : state.timeLeft.minutes,
+                    seconds : state.timeLeft.seconds < 60 ? state.timeLeft.seconds + 1 : state.timeLeft.seconds,
+                }
+
+            }
+        case DECREMENT_SECONDS:
+            return {
+                ...state,
+                timeLeft : {
+                    hours : state.timeLeft.hours,
+                    minutes : state.timeLeft.minutes,
+                    seconds : state.timeLeft.seconds > 0 ? state.timeLeft.seconds - 1 : state.timeLeft.seconds,
+                }
+            }
         case CLEAR_INTERVAL:
             
             clearInterval(state.interval)

@@ -1,16 +1,19 @@
 import './App.css';
 import Clock from './Components/Clock'
-import { useReducer} from 'react'
+import React, { useReducer, useContext} from 'react'
 import mainReducer, {COUNT_DOWN, SET_INTERVAL, RESET, CLEAR_INTERVAL, initialState} from './reducer'
 
-
+export const DispatchContext = React.createContext()
 
 function App() {
   const [state, dispatch] = useReducer(mainReducer, initialState)
 
   return (
     <div className="App">
+      <DispatchContext.Provider value={dispatch}>
       <Clock time ={state.timeLeft}/>
+
+      </DispatchContext.Provider>
       <button className="controls" onClick={() => {
         if(state.interval === null){
           dispatch({

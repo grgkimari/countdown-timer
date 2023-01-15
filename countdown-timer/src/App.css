@@ -35,3 +35,27 @@
   font-family: inherit;
   font-size: 1.5rem;
 }
+
+.btn{
+  width : 50px;
+  height: 50px;
+  border : none;
+  border-radius: 50%;
+  font-size: 2rem;
+}
+
+.plusBtn{
+  background-color: lightgreen;
+}
+
+.minusBtn {
+  background-color: lightcoral;
+}
+
+.plusBtn:hover{
+  background-color: limegreen;
+}
+
+.minusBtn:hover{
+  background-color: red;
+}
